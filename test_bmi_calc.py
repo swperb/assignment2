@@ -10,12 +10,20 @@ class TestBmiCalc:
         assert convert_to_inches("5 5") == 65
         assert convert_to_inches("6 0") == 72
 
+        # Test upper and lower boundaries
+        assert convert_to_inches("0 0") == 0
+        assert convert_to_inches("12 0") == 144
+
 
     def test_metric_conversion_weight(self):
         # Test arbitrary weights
         assert metric_conversion_weight(150) == 67.5
         assert metric_conversion_weight(200) == 90
         assert metric_conversion_weight(100) == 45
+
+        # Test upper and lower boundaries
+        assert metric_conversion_weight(0) == 0
+        assert metric_conversion_weight(1000) == 450
 
 
     def test_metric_conversion_height(self):
@@ -24,6 +32,10 @@ class TestBmiCalc:
         assert metric_conversion_height(65) == 1.625
         assert metric_conversion_height(45) == 1.125
 
+        # Test upper and lower boundaries
+        assert metric_conversion_height(0) == 0
+        assert metric_conversion_height(1000) == 25
+
 
     def test_meters_squared(self):
         # Test arbitrary values
@@ -31,12 +43,19 @@ class TestBmiCalc:
         assert meters_squared(16.5) == 272.25
         assert meters_squared(10) == 100
 
+        # Test upper and lower boundaries
+        assert meters_squared(0) == 0
+        assert meters_squared(100) == 10000
+
 
     def test_bmi_conversion(self):
         # Test conversions
         assert bmi_conversion(80, 130) == 14.625
-        assert bmi_conversion(60, 200) == 40.0
-        assert bmi_conversion(40, 100) == 45.0
+        assert bmi_conversion(60, 100) == 20.0
+        assert bmi_conversion(40, 75) == 33.75
+
+        assert bmi_conversion(10, 10) == 72.0
+        assert bmi_conversion(1000, 1000) == 0.72
 
 
     def test_bmi_category(self):
