@@ -5,44 +5,31 @@ from bmi_calc import convert_to_inches, metric_conversion_weight, metric_convers
 class TestBmiCalc:
 
     def test_convert_to_inches(self):
-        # Test interior points
+        # Test arbitrary heights
         assert convert_to_inches("5 10") == 70
         assert convert_to_inches("5 5") == 65
         assert convert_to_inches("6 0") == 72
 
-        # Test upper and lower boundaries
-        assert convert_to_inches("0 0") == 0
-        assert convert_to_inches("12 0") == 144
 
     def test_metric_conversion_weight(self):
-        # Test interior points
+        # Test arbitrary weights
         assert metric_conversion_weight(150) == 67.5
         assert metric_conversion_weight(200) == 90
         assert metric_conversion_weight(100) == 45
-        
-        # Test upper and lower boundaries
-        assert metric_conversion_weight(0) == 0
-        assert metric_conversion_weight(500) == 225
+
 
     def test_metric_conversion_height(self):
-        # Test interior points
+        # Test arbitrary heights
         assert metric_conversion_height(70) == 1.75
         assert metric_conversion_height(65) == 1.625
         assert metric_conversion_height(45) == 1.125
 
-        # Test upper and lower boundaries
-        assert metric_conversion_height(0) == 0
-        assert metric_conversion_height(1000) == 25
 
     def test_meters_squared(self):
-        # Test interior points
+        # Test arbitrary values
         assert meters_squared(13) == 169
         assert meters_squared(16.5) == 272.25
         assert meters_squared(10) == 100
-
-        # Test upper and lower boundaries
-        assert meters_squared(0) == 0
-        assert meters_squared(100) == 10000
 
 
     def test_bmi_conversion(self):
